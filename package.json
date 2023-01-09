@@ -10,6 +10,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.2.2",
     "ra-data-json-server": "^4.6.3",
     "react": "^18.2.0",
     "react-admin": "^4.6.3",
@@ -20,7 +21,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start:staging": "REACT_APP_STATE=staging react-scripts start",
+    "build:staging": "REACT_APP_STATE=staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
