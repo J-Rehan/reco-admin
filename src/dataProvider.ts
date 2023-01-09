@@ -1,8 +1,11 @@
 import { stringify } from "query-string";
 import axios from "axios";
+import config from "./admin/config/config";
+
+
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
-const apiUrl = "http://localhost:3002/v1";
+let { apiUrl } = config;
 
 function getHeaders() {
   let headers = {
