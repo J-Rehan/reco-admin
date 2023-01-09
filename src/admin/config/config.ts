@@ -1,4 +1,4 @@
-let apiUrl, fireId, firebaseConfig;
+let apiUrl;
 
 if (process.env.REACT_APP_STATE === "production") {
   apiUrl = "https://api.petention.com/v1";
