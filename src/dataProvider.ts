@@ -67,6 +67,7 @@ const dataprovider = {
   },
 
   getOne: (resource: string, params: any) => {
+    console.log("getting one", params)
     const url = `${apiUrl}/${resource}/${params.id}`;
     return axios({
       url: url,
@@ -74,7 +75,7 @@ const dataprovider = {
       headers: getHeaders(),
     })
       .then((json) => ({
-        data: json.data.data,
+        data: json.data,
       }))
 
       .catch((err) => {
@@ -154,14 +155,16 @@ const dataprovider = {
   },
 
   create: (resource: string, params: any) => {
+    console.log("params",params)
     const url = `${apiUrl}/${resource}`;
     return axios({
       url: url,
       method: "POST",
       headers: getHeaders(),
+      data: params.data,
     })
       .then((json) => ({
-        data: json.data.data,
+        data: json.data,
       }))
 
       .catch((err) => {
@@ -178,14 +181,17 @@ const dataprovider = {
   },
 
   update: (resource: string, params: any) => {
-    const url = `${apiUrl}/${resource}`;
+    console.log("===params put",params)
+    const url = `${apiUrl}/${resource}/${params.id}`;
+    const updata = {...params.data,created_at:undefined, updated_at:undefined,id:undefined, tag_keyname:undefined}
     return axios({
       url: url,
-      method: "POST",
+      method: "PATCH",
       headers: getHeaders(),
+      data: updata,
     })
       .then((json) => ({
-        data: json.data.data,
+        data: json.data,
       }))
 
       .catch((err) => {

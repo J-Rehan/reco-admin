@@ -20,6 +20,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "start:local": "REACT_APP_STATE=local react-scripts start",
     "start": "react-scripts start",
     "start:staging": "REACT_APP_STATE=staging react-scripts start",
     "build:staging": "REACT_APP_STATE=staging react-scripts build",
