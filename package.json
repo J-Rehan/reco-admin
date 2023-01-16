@@ -22,7 +22,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:staging": "REACT_APP_STATE=staging react-scripts build",
+    "build:local": "REACT_APP_STATE=local react-scripts build",
+    "build:prod": "REACT_APP_STATE=production react-scripts build",
+    "start:prod": "REACT_APP_STATE=production react-scripts start",
+    "start:staging": "REACT_APP_STATE=staging react-scripts start"
   },
   "eslintConfig": {
     "extends": [
