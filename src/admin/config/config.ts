@@ -25,7 +25,7 @@ if (process.env.REACT_APP_STATE === "production") {
 //     appId: "1:756227256349:web:8f4f6e07a77f0db7af56f4",
 //   };
 } else if (process.env.REACT_APP_STATE === "local") {
-  apiUrl = "http://localhost:3002/v1";
+  apiUrl = "http://localhost:3000/v1";
 //   fireId = "f0b87cc393dbc382d713475165b0a5eb";
 //   firebaseConfig = {
 //     apiKey: "AIzaSyDbF0G0L2xpCChGiq064flQM_sfmZI0QfA",

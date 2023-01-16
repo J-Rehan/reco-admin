@@ -2,7 +2,6 @@ import { stringify } from "query-string";
 import axios from "axios";
 import config from "./admin/config/config";
 
-
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
 let { apiUrl } = config;
@@ -39,7 +38,8 @@ const dataprovider = {
 
     let filterQuery = "";
     for (let i = 0; i < keys.length; i++) {
-        filterQuery = filterQuery + "&filter[" + keys[i] + "]=" + filters[keys[i]];
+      filterQuery =
+        filterQuery + "&filter[" + keys[i] + "]=" + filters[keys[i]];
     }
     const url = `${apiUrl}/${resource}/list?${stringify(query)}${filterQuery}`;
 
@@ -67,7 +67,7 @@ const dataprovider = {
   },
 
   getOne: (resource: string, params: any) => {
-    console.log("getting one", params)
+    console.log("getting one", params);
     const url = `${apiUrl}/${resource}/${params.id}`;
     return axios({
       url: url,
@@ -91,11 +91,40 @@ const dataprovider = {
       });
   },
 
-  getMany: (resource: string, params: any) => {
-    const query = {
-      filter: JSON.stringify({ ids: params.ids }),
-    };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+  // getMany: (resource: string, params: any) => {
+  //  console.log( "i m calling refere",resource);
+
+  //   const query = {
+  //     filter: JSON.stringify({ ids: params.ids }),
+  //   };
+  //   const url = `${apiUrl}/${resource}?${stringify(query)}`;
+  //   return axios({
+  //     url: url,
+  //     method: "GET",
+  //     headers: getHeaders(),
+  //   })
+  //     .then((json) => ({
+  //       data: json.data.data,
+  //       total: parseInt(json.data.totalCount),
+  //     }))
+
+  //     .catch((err) => {
+  //       let error = { message: "Error Occurred" };
+  //       if (err.response)
+  //         if (err.response.data)
+  //           if (err.response.data.error) error = err.response.data.error;
+  //           else error = err.response.data;
+  //         else error = err.response;
+  //       else error = err;
+
+  //       throw error;
+  //     });
+  // },
+
+  getMany: async (resource: string, params: any) => {
+   
+    const url = `${apiUrl}/${resource}/list`;
+
     return axios({
       url: url,
       method: "GET",
@@ -103,9 +132,7 @@ const dataprovider = {
     })
       .then((json) => ({
         data: json.data.data,
-        total: parseInt(json.data.totalCount),
       }))
-
       .catch((err) => {
         let error = { message: "Error Occurred" };
         if (err.response)
@@ -155,7 +182,7 @@ const dataprovider = {
   },
 
   create: (resource: string, params: any) => {
-    console.log("params",params)
+    console.log("params", params);
     const url = `${apiUrl}/${resource}`;
     return axios({
       url: url,
@@ -181,9 +208,15 @@ const dataprovider = {
   },
 
   update: (resource: string, params: any) => {
-    console.log("===params put",params)
+    console.log("===params put", params);
     const url = `${apiUrl}/${resource}/${params.id}`;
-    const updata = {...params.data,created_at:undefined, updated_at:undefined,id:undefined, tag_keyname:undefined}
+    const updata = {
+      ...params.data,
+      created_at: undefined,
+      updated_at: undefined,
+      id: undefined,
+      tag_keyname: undefined,
+    };
     return axios({
       url: url,
       method: "PATCH",
