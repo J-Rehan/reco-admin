@@ -6,10 +6,15 @@ import PinsList from "./components/pins/PinsList";
 import { TagCreate, TagEdit } from "./components/tags/TagForm";
 import TagsList from "./components/tags/TagsList";
 import UserList from "./components/users/UserList";
+import { FirebaseAuthProvider } from "react-admin-firebase";
+import config from "./config/config";
 
+
+const options = {};
+const authProvider = FirebaseAuthProvider(config.firebaseConfig, options);
 
 const App = () => (
-  <Admin dataProvider={dataProvider}>
+  <Admin authProvider={authProvider} dataProvider={dataProvider}>
     <Resource name="users" list={UserList} />
     <Resource name="categories" list={CategoriesList} create={CategoryCreate} edit={CategoryEdit} />
     <Resource name="tags" list={TagsList} create={TagCreate} edit={TagEdit} />

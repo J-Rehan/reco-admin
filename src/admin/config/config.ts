@@ -1,47 +1,48 @@
 let apiUrl;
+let xApiKey;
+let firebaseConfig={};
 
 if (process.env.REACT_APP_STATE === "production") {
-  apiUrl = "https://api.petention.com/v1";
-//   fireId = "2dfcd0388eada182a7504aec50296ebe";
-//   firebaseConfig = {
-//     apiKey: "AIzaSyAxC-irrzuOMNEL3TYIZ1o7049ftvFUIQE",
-//     authDomain: "petention-admin.firebaseapp.com",
-//     projectId: "petention-admin",
-//     storageBucket: "petention-admin.appspot.com",
-//     messagingSenderId: "73505657438",
-//     appId: "1:73505657438:web:2af4a4f25f4a77d9ac5acf",
-//     measurementId: "G-HK2LX54QW9",
-//   };
+  apiUrl = "https:/";
+  firebaseConfig = {
+    apiKey: "AIzaSyAqCrmCSiX4Gcrf5a08evNcTtxTh98-cCc",
+    authDomain: "recoapp-19f88.firebaseapp.com",
+    projectId: "recoapp-19f88",
+    storageBucket: "recoapp-19f88.appspot.com",
+    messagingSenderId: "680284497922",
+    appId: "1:680284497922:web:4b74fc88d2cba01c155f1b",
+  };
 } else if (process.env.REACT_APP_STATE === "staging") {
-  apiUrl = "http://recobackend-env.eba-m6tynscj.us-east-1.elasticbeanstalk.com/v1";
-//   fireId = "f0b87cc393dbc382d713475165b0a5eb";
-//   firebaseConfig = {
-//     apiKey: "AIzaSyDbF0G0L2xpCChGiq064flQM_sfmZI0QfA",
-//     authDomain: "petentionadmin.firebaseapp.com",
-//     databaseURL: "https://petentionadmin.firebaseio.com",
-//     projectId: "petentionadmin",
-//     storageBucket: "petentionadmin.appspot.com",
-//     messagingSenderId: "756227256349",
-//     appId: "1:756227256349:web:8f4f6e07a77f0db7af56f4",
-//   };
+  apiUrl =
+    "http://recobackend-env.eba-m6tynscj.us-east-1.elasticbeanstalk.com/v1";
+  firebaseConfig = {
+    apiKey: "AIzaSyAqCrmCSiX4Gcrf5a08evNcTtxTh98-cCc",
+    authDomain: "recoapp-19f88.firebaseapp.com",
+    projectId: "recoapp-19f88",
+    storageBucket: "recoapp-19f88.appspot.com",
+    messagingSenderId: "680284497922",
+    appId: "1:680284497922:web:4b74fc88d2cba01c155f1b",
+    
+  };
+  xApiKey= "1ab2c3d4e5f61ab2c3d4e5f6";
 } else if (process.env.REACT_APP_STATE === "local") {
   apiUrl = "http://localhost:3000/v1";
-//   fireId = "f0b87cc393dbc382d713475165b0a5eb";
-//   firebaseConfig = {
-//     apiKey: "AIzaSyDbF0G0L2xpCChGiq064flQM_sfmZI0QfA",
-//     authDomain: "petentionadmin.firebaseapp.com",
-//     databaseURL: "https://petentionadmin.firebaseio.com",
-//     projectId: "petentionadmin",
-//     storageBucket: "petentionadmin.appspot.com",
-//     messagingSenderId: "756227256349",
-//     appId: "1:756227256349:web:8f4f6e07a77f0db7af56f4",
-//   };
+  firebaseConfig = {
+    apiKey: "AIzaSyAqCrmCSiX4Gcrf5a08evNcTtxTh98-cCc",
+    authDomain: "recoapp-19f88.firebaseapp.com",
+    projectId: "recoapp-19f88",
+    storageBucket: "recoapp-19f88.appspot.com",
+    messagingSenderId: "680284497922",
+    appId: "1:680284497922:web:4b74fc88d2cba01c155f1b",
+  };
+  xApiKey= "1ab2c3d4e5f61ab2c3d4e5f6";
+
 }
 
 const config = {
-    apiUrl: apiUrl,
-  //   fireId: fireId,
-  //   firebaseConfig: firebaseConfig,
-  };
-  
+  apiUrl: apiUrl,
+  firebaseConfig: firebaseConfig,
+  xApiKey:xApiKey
+};
+
 export default config;

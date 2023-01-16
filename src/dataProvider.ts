@@ -1,26 +1,32 @@
 import { stringify } from "query-string";
 import axios from "axios";
 import config from "./admin/config/config";
+import { FirebaseAuthProvider } from "react-admin-firebase";
 
+
+const { apiUrl, xApiKey, firebaseConfig } = config;
+
+
+const authProvider = FirebaseAuthProvider(firebaseConfig, {});
 axios.defaults.headers.post["Content-Type"] = "application/json";
 
-let { apiUrl } = config;
 
-function getHeaders() {
+function getHeaders(token: string | null) {
   let headers = {
-    //   Authorization:
-    //     "Bearer " +
-    //     (process.env.REACT_APP_STATE === "test" ? "test_admin_token" : token),
-    //   firebaseid: fireId,
-    "x-api-key": "1ab2c3d4e5f61ab2c3d4e5f6",
+    Authorization:
+      "Bearer " +
+      (process.env.REACT_APP_STATE === "test" ? "test_admin_token" : token),
+    "x-api-key": xApiKey,
   };
 
   return headers;
 }
 
 const dataprovider = {
-  getList: (resource: string, params: any) => {
-    console.log("params", params);
+  getList: async (resource: string, params: any) => {
+
+    const token = await authProvider.getJWTToken();
+
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
 
@@ -46,7 +52,7 @@ const dataprovider = {
     return axios({
       url: url,
       method: "GET",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
@@ -66,13 +72,14 @@ const dataprovider = {
       });
   },
 
-  getOne: (resource: string, params: any) => {
-    console.log("getting one", params);
+  getOne: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const url = `${apiUrl}/${resource}/${params.id}`;
     return axios({
       url: url,
       method: "GET",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data,
@@ -122,13 +129,14 @@ const dataprovider = {
   // },
 
   getMany: async (resource: string, params: any) => {
-   
+    const token = await authProvider.getJWTToken();
+
     const url = `${apiUrl}/${resource}/list`;
 
     return axios({
       url: url,
       method: "GET",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
@@ -146,7 +154,9 @@ const dataprovider = {
       });
   },
 
-  getManyReference: (resource: string, params: any) => {
+  getManyReference: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
     const query = {
@@ -161,7 +171,7 @@ const dataprovider = {
     return axios({
       url: url,
       method: "GET",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
@@ -181,13 +191,14 @@ const dataprovider = {
       });
   },
 
-  create: (resource: string, params: any) => {
-    console.log("params", params);
+  create: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const url = `${apiUrl}/${resource}`;
     return axios({
       url: url,
       method: "POST",
-      headers: getHeaders(),
+      headers: getHeaders(token),
       data: params.data,
     })
       .then((json) => ({
@@ -207,8 +218,9 @@ const dataprovider = {
       });
   },
 
-  update: (resource: string, params: any) => {
-    console.log("===params put", params);
+  update: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const url = `${apiUrl}/${resource}/${params.id}`;
     const updata = {
       ...params.data,
@@ -220,7 +232,7 @@ const dataprovider = {
     return axios({
       url: url,
       method: "PATCH",
-      headers: getHeaders(),
+      headers: getHeaders(token),
       data: updata,
     })
       .then((json) => ({
@@ -240,7 +252,9 @@ const dataprovider = {
       });
   },
 
-  updateMany: (resource: string, params: any) => {
+  updateMany: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
@@ -248,7 +262,7 @@ const dataprovider = {
     return axios({
       url: url,
       method: "PUT",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
@@ -267,12 +281,14 @@ const dataprovider = {
       });
   },
 
-  delete: (resource: string, params: any) => {
+  delete: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const url = `${apiUrl}/${resource}`;
     return axios({
       url: url,
       method: "DELETE",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
@@ -291,7 +307,9 @@ const dataprovider = {
       });
   },
 
-  deleteMany: (resource: string, params: any) => {
+  deleteMany: async (resource: string, params: any) => {
+    const token = await authProvider.getJWTToken();
+
     const query = {
       filter: JSON.stringify({ id: params.ids }),
     };
@@ -299,7 +317,7 @@ const dataprovider = {
     return axios({
       url: url,
       method: "DELETE",
-      headers: getHeaders(),
+      headers: getHeaders(token),
     })
       .then((json) => ({
         data: json.data.data,
