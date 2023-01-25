@@ -43,12 +43,12 @@ const PinsList = (props: any) => (
     filters={<PinsFilter {...props} />}
     pagination={<CustomPagination />}
   >
-    <Datagrid>
+    <Datagrid rowClick={"edit"}>
       <ReferenceField
         label="User"
         source="user_id"
         reference="users"
-        link="edit"
+        link="show"
       >
         <TextField source="name" />
       </ReferenceField>

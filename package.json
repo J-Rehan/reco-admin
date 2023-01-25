@@ -30,7 +30,9 @@
     "build:local": "REACT_APP_STATE=local react-scripts build",
     "build:prod": "REACT_APP_STATE=production react-scripts build",
     "start:prod": "REACT_APP_STATE=production react-scripts start",
-    "start:staging": "REACT_APP_STATE=staging react-scripts start"
+    "start:staging": "REACT_APP_STATE=staging react-scripts start",
+    "start:local": "REACT_APP_STATE=local react-scripts start"
+
   },
   "eslintConfig": {
     "extends": [

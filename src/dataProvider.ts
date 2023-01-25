@@ -156,18 +156,12 @@ const dataprovider = {
 
   getManyReference: async (resource: string, params: any) => {
     const token = await authProvider.getJWTToken();
-
-    const { page, perPage } = params.pagination;
-    const { field, order } = params.sort;
+    console.log("params ref",params)
     const query = {
-      sort: JSON.stringify([field, order]),
-      range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),
-      filter: JSON.stringify({
-        ...params.filter,
-        [params.target]: params.id,
-      }),
+      [params.target]:  params.id,
+    
     };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${apiUrl}/${resource}/reference?${stringify(query)}`;
     return axios({
       url: url,
       method: "GET",

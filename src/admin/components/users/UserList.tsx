@@ -37,11 +37,12 @@ const UserList = (props:any) => (
     filters={<UserFilter {...props} />}
     pagination={<CustomPagination />}
     >
-        <Datagrid>
+        <Datagrid rowClick={"show"}>
             <TextField source="name" />
             <TextField source="username" />
             <TextField source="email" />
             <TextField source="phone_number" />
+            <TextField source="pinsCount" />
 
         </Datagrid>
     </List>

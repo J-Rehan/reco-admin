@@ -26,7 +26,7 @@ const CategoriesList = (props:any) => (
     filters={<CategoriesFilter {...props} />}
     pagination={<CustomPagination />}
     >
-        <Datagrid>
+        <Datagrid rowClick={"edit"}>
             <TextField source="category_name" />
             <EditButton />
         </Datagrid>
