@@ -38,7 +38,6 @@ const UserList = (props:any) => (
     pagination={<CustomPagination />}
     >
         <Datagrid>
-            <TextField source="id" />
             <TextField source="name" />
             <TextField source="username" />
             <TextField source="email" />

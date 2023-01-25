@@ -26,7 +26,6 @@ const TagsList = (props:any) => (
     pagination={<CustomPagination />}
     >
         <Datagrid>
-            <TextField source="id" />
             <TextField source="tag_name" />
             <EditButton />
         </Datagrid>

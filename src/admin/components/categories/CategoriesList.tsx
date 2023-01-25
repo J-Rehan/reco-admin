@@ -27,7 +27,6 @@ const CategoriesList = (props:any) => (
     pagination={<CustomPagination />}
     >
         <Datagrid>
-            <TextField source="id" />
             <TextField source="category_name" />
             <EditButton />
         </Datagrid>

@@ -44,7 +44,6 @@ const PinsList = (props: any) => (
     pagination={<CustomPagination />}
   >
     <Datagrid>
-      <TextField source="id" />
       <ReferenceField
         label="User"
         source="user_id"
