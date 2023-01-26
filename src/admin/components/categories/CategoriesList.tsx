@@ -4,7 +4,6 @@ import {
   TextField,
   Filter,
   TextInput,
-  EditButton,
  
 } from "react-admin";
 import CustomPagination from "../pagination/pagination";
@@ -28,7 +27,9 @@ const CategoriesList = (props:any) => (
     >
         <Datagrid rowClick={"edit"}>
             <TextField source="category_name" />
-            <EditButton />
+            <TextField source="category_color" />
+            <TextField source="category_icon_name" />
+
         </Datagrid>
     </List>
 );
