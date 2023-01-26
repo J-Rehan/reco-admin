@@ -9,6 +9,7 @@ import UserList from "./components/users/UserList";
 import { FirebaseAuthProvider } from "react-admin-firebase";
 import config from "./config/config";
 import { UserShow } from "./components/users/UserShow";
+import { PinCreate } from "./components/pins/PinForm";
 
 
 const options = {};
@@ -19,7 +20,7 @@ const App = () => (
     <Resource name="users" list={UserList} show={UserShow}/>
     <Resource name="categories" list={CategoriesList} create={CategoryCreate} edit={CategoryEdit} />
     <Resource name="tags" list={TagsList} create={TagCreate} edit={TagEdit} />
-    <Resource name="pins" list={PinsList} />
+    <Resource name="pins" list={PinsList} create={PinCreate}/>
 
   </Admin>
 );

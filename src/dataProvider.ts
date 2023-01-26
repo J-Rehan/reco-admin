@@ -305,7 +305,7 @@ const dataprovider = {
     const token = await authProvider.getJWTToken();
 
     const query = {
-      filter: JSON.stringify({ id: params.ids }),
+      ids:  params.ids,
     };
     const url = `${apiUrl}/${resource}?${stringify(query)}`;
     return axios({
@@ -314,7 +314,7 @@ const dataprovider = {
       headers: getHeaders(token),
     })
       .then((json) => ({
-        data: json.data.data,
+        data: [json.data.data],
       }))
 
       .catch((err) => {
