@@ -3,7 +3,6 @@ import {
   AutocompleteArrayInput,
   Create,
   Edit,
-  NumberField,
   NumberInput,
   ReferenceArrayInput,
   ReferenceInput,
