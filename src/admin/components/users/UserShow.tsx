@@ -2,7 +2,6 @@ import React from "react";
 import {
   Datagrid,
   ReferenceManyField,
-  required,
   Show,
   SimpleForm,
   TextField,
