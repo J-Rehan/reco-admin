@@ -3,14 +3,14 @@ let xApiKey;
 let firebaseConfig={};
 
 if (process.env.REACT_APP_STATE === "production") {
-  apiUrl = "https:/";
+  apiUrl = "https://recoprodbackend-env.eba-imipffcp.us-east-1.elasticbeanstalk.com/v1";
   firebaseConfig = {
-    apiKey: "AIzaSyAqCrmCSiX4Gcrf5a08evNcTtxTh98-cCc",
-    authDomain: "recoapp-19f88.firebaseapp.com",
-    projectId: "recoapp-19f88",
-    storageBucket: "recoapp-19f88.appspot.com",
-    messagingSenderId: "680284497922",
-    appId: "1:680284497922:web:4b74fc88d2cba01c155f1b",
+    apiKey: "AIzaSyBlWV3eNcFn_j0FPi9Pnn4A7Bvs-IA0dsU",
+    authDomain: "recoprod-d3f83.firebaseapp.com",
+    projectId: "recoprod-d3f83",
+    storageBucket: "recoprod-d3f83.appspot.com",
+    messagingSenderId: "509434945191",
+    appId: "1:509434945191:web:f84d238e36c048a0804582"
   };
 } else if (process.env.REACT_APP_STATE === "staging") {
   apiUrl =
