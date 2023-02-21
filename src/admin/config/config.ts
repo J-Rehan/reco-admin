@@ -3,7 +3,7 @@ let xApiKey;
 let firebaseConfig={};
 
 if (process.env.REACT_APP_STATE === "production") {
-  apiUrl = "https://recoprodbackend-env.eba-imipffcp.us-east-1.elasticbeanstalk.com/v1";
+  apiUrl = "http://recoprodbackend-env.eba-imipffcp.us-east-1.elasticbeanstalk.com/v1";
   firebaseConfig = {
     apiKey: "AIzaSyBlWV3eNcFn_j0FPi9Pnn4A7Bvs-IA0dsU",
     authDomain: "recoprod-d3f83.firebaseapp.com",
