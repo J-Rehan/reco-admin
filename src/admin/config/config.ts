@@ -12,6 +12,8 @@ if (process.env.REACT_APP_STATE === "production") {
     messagingSenderId: "509434945191",
     appId: "1:509434945191:web:f84d238e36c048a0804582"
   };
+  xApiKey= "c899a6108b2201ae57346b50270951ea";
+
 } else if (process.env.REACT_APP_STATE === "staging") {
   apiUrl =
     "http://recobackend-env.eba-m6tynscj.us-east-1.elasticbeanstalk.com/v1";
